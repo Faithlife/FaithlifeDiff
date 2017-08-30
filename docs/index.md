@@ -1,12 +1,12 @@
-# ProjectName
+# Faithlife.Diff
 
-**ProjectName** description
+**Faithlife.Diff** description
 
 ## Installation
 
-ProjectName should be installed [via NuGet](https://www.nuget.org/packages/ProjectName).
+Faithlife.Diff should be installed [via NuGet](https://www.nuget.org/packages/Faithlife.Diff).
 
 ## Documentation
 
-* [Reference Documentation](ProjectName.md)
+* [Reference Documentation](Faithlife.Diff.md)
 

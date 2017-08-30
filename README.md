@@ -1,4 +1,4 @@
-# ProjectName
+# Faithlife.Diff
 
 Description
 
@@ -6,11 +6,11 @@ Description
 
 Ubuntu | Windows | NuGet
 --- | --- | ---
-[![Travis CI](https://img.shields.io/travis/Faithlife/RepoName/master.svg)](https://travis-ci.org/Faithlife/RepoName) | [![AppVeyor](https://img.shields.io/appveyor/ci/Faithlife/reponame/master.svg)](https://ci.appveyor.com/project/Faithlife/reponame) | [![NuGet](https://img.shields.io/nuget/v/ProjectName.svg)](https://www.nuget.org/packages/ProjectName)
+[![Travis CI](https://img.shields.io/travis/Faithlife/FaithlifeDiff/master.svg)](https://travis-ci.org/Faithlife/FaithlifeDiff) | [![AppVeyor](https://img.shields.io/appveyor/ci/Faithlife/faithlifediff/master.svg)](https://ci.appveyor.com/project/Faithlife/faithlifediff) | [![NuGet](https://img.shields.io/nuget/v/Faithlife.Diff.svg)](https://www.nuget.org/packages/Faithlife.Diff)
 
 ## Documentation
 
-http://faithlife.github.io/RepoName/
+http://faithlife.github.io/FaithlifeDiff/
 
 ## License
 
