@@ -10,7 +10,7 @@ Ubuntu | Windows | NuGet
 
 ## Documentation
 
-http://faithlife.github.io/FaithlifeDiff/
+https://faithlife.github.io/FaithlifeDiff/
 
 ## License
 
