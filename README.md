@@ -1,6 +1,6 @@
 # Faithlife.Diff
 
-Description
+Finds the differences between two lists of items.
 
 ## Build Status
 
