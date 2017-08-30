@@ -9,7 +9,7 @@ var trigger = Argument("trigger", "");
 
 var nugetSource = "https://api.nuget.org/v3/index.json";
 var solutionFileName = "Faithlife.Diff.sln";
-var docsAssembly = $@"src\Faithlife.Diff\bin\{configuration}\netstandard1.4\Faithlife.Diff.dll";
+var docsAssembly = $@"src\Faithlife.Diff\bin\{configuration}\net46\Faithlife.Diff.dll";
 var docsSourceUri = "https://github.com/Faithlife/FaithlifeDiff/tree/master/src/Faithlife.Diff";
 
 Task("Clean")
