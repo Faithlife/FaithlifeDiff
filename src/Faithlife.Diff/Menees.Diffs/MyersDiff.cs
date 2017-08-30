@@ -20,7 +20,7 @@ namespace Menees.Diffs
 	/// hash corresponds to a line of text.  Then it can be
 	/// used to diff two text files on a line-by-line basis.
 	/// </summary>
-	public sealed class MyersDiff<T> where T : IComparable<T>
+	internal sealed class MyersDiff<T> where T : IComparable<T>
 	{
 		#region Private Data Members
 

@@ -14,7 +14,7 @@ namespace Menees.Diffs
 
 	[SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix",
 		Justification = "Using the same name as in Myers's paper.")]
-	public sealed class EditScript : ReadOnlyCollection<Edit>
+	internal sealed class EditScript : ReadOnlyCollection<Edit>
 	{
 		#region Private Data Members
 

@@ -13,7 +13,7 @@ namespace Menees.Diffs
 
 	#region Public EditType
 
-	public enum EditType
+	internal enum EditType
 	{
 		None,
 		Delete,
@@ -25,7 +25,7 @@ namespace Menees.Diffs
 
 	#region Public HashType
 
-	public enum HashType
+	internal enum HashType
 	{
 		HashCode,
 
