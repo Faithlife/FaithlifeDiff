@@ -14,57 +14,57 @@ namespace Faithlife.Diff
 		/// Finds the differences between the two lists.
 		/// </summary>
 		/// <typeparam name="T">The type of item in the lists.</typeparam>
-		/// <param name="listFirst">The first list.</param>
-		/// <param name="listSecond">The second list.</param>
+		/// <param name="first">The first list.</param>
+		/// <param name="second">The second list.</param>
 		/// <returns>A sequence of pairs that indicate the differences between the lists.</returns>
 		/// <remarks><para>Each pair identifies a range of items in each list. The items before and after each range
 		/// are the same in both lists; the items in each range are the difference. One of the two ranges can be
 		/// empty, but the index of the range still indicates where the missing items are.</para>
 		/// <para>EqualityComparer&lt;T>.Default is used to compare items.</para></remarks>
-		public static IEnumerable<ValueTuple<IndexRange, IndexRange>> FindDifferences<T>(IList<T> listFirst, IList<T> listSecond)
+		public static IReadOnlyList<(IndexRange FirstRange, IndexRange SecondRange)> FindDifferences<T>(IReadOnlyList<T> first, IReadOnlyList<T> second)
 		{
-			return FindDifferences(listFirst, listSecond, null);
+			return FindDifferences(first, second, null);
 		}
 
 		/// <summary>
 		/// Finds the differences between the two lists.
 		/// </summary>
 		/// <typeparam name="T">The type of item in the lists.</typeparam>
-		/// <param name="listFirst">The first list.</param>
-		/// <param name="listSecond">The second list.</param>
+		/// <param name="first">The first list.</param>
+		/// <param name="second">The second list.</param>
 		/// <param name="comparer">The comparer.</param>
 		/// <returns>A sequence of pairs that indicate the differences between the lists.</returns>
 		/// <remarks><para>Each pair identifies a range of items in each list. The items before and after each range
 		/// are the same in both lists; the items in each range are the difference. One of the two ranges can be
 		/// empty, but the index of the range still indicates where the missing items are.</para>
 		/// <para>If comparer is null, EqualityComparer&lt;T>.Default is used.</para></remarks>
-		public static IEnumerable<ValueTuple<IndexRange, IndexRange>> FindDifferences<T>(IList<T> listFirst, IList<T> listSecond,
+		public static IReadOnlyList<(IndexRange FirstRange, IndexRange SecondRange)> FindDifferences<T>(IReadOnlyList<T> first, IReadOnlyList<T> second,
 			IEqualityComparer<T> comparer)
 		{
-			if (listFirst == null)
-				throw new ArgumentNullException("listFirst");
-			if (listSecond == null)
-				throw new ArgumentNullException("listSecond");
+			if (first == null)
+				throw new ArgumentNullException(nameof(first));
+			if (second == null)
+				throw new ArgumentNullException(nameof(second));
 
 			int[] anCodesFirst;
 			int[] anCodesSecond;
-			IList<int> listFirstOfInt = listFirst as IList<int>;
+			var listFirstOfInt = first as IEnumerable<int>;
 			if (listFirstOfInt != null && (comparer == null || comparer == EqualityComparer<T>.Default))
 			{
 				anCodesFirst = listFirstOfInt.ToArray();
-				anCodesSecond = ((IList<int>) listSecond).ToArray();
+				anCodesSecond = ((IEnumerable<int>) second).ToArray();
 			}
 			else
 			{
-				Dictionary<T, int> dict = new Dictionary<T, int>(listFirst.Count + listSecond.Count, comparer);
-				anCodesFirst = CreateUniqueIntegerForEachItem(listFirst, dict);
-				anCodesSecond = CreateUniqueIntegerForEachItem(listSecond, dict);
+				Dictionary<T, int> dict = new Dictionary<T, int>(first.Count + second.Count, comparer);
+				anCodesFirst = CreateUniqueIntegerForEachItem(first, dict);
+				anCodesSecond = CreateUniqueIntegerForEachItem(second, dict);
 			}
 
 			return DoFindDifferences(anCodesFirst, anCodesSecond);
 		}
 
-		private static IEnumerable<ValueTuple<IndexRange, IndexRange>> DoFindDifferences(int[] anCodesFirst, int[] anCodesSecond)
+		private static IReadOnlyList<(IndexRange FirstRange, IndexRange SecondRange)> DoFindDifferences(int[] anCodesFirst, int[] anCodesSecond)
 		{
 			MyersDiff<int> diff = new MyersDiff<int>(anCodesFirst, anCodesSecond, supportChangeEditType: true);
 			EditScript script = diff.Execute();
@@ -90,7 +90,7 @@ namespace Faithlife.Diff
 						{
 							IndexRange rangeVariant = pairLastChange.Item2;
 							rangeVariant = new IndexRange(rangeVariant.Start, rangeVariant.Length + edit.Length);
-							listChanges[listChanges.Count - 1] = new ValueTuple<IndexRange, IndexRange>(pairLastChange.Item1, rangeVariant);
+							listChanges[listChanges.Count - 1] = (pairLastChange.Item1, rangeVariant);
 							bExtendedSecond = true;
 						}
 					}
@@ -114,7 +114,7 @@ namespace Faithlife.Diff
 						{
 							IndexRange rangeBase = pairLastChange.Item1;
 							rangeBase = new IndexRange(rangeBase.Start, rangeBase.Length + edit.Length);
-							listChanges[listChanges.Count - 1] = new ValueTuple<IndexRange, IndexRange>(rangeBase, pairLastChange.Item2);
+							listChanges[listChanges.Count - 1] = (rangeBase, pairLastChange.Item2);
 							bExtendedFirst = true;
 						}
 					}
@@ -134,7 +134,7 @@ namespace Faithlife.Diff
 
 				if (rangeFirst != null)
 				{
-					listChanges.Add(new ValueTuple<IndexRange, IndexRange>(rangeFirst.Value, rangeSecond.Value));
+					listChanges.Add((rangeFirst.Value, rangeSecond.Value));
 					rangeFirst = null;
 					rangeSecond = null;
 				}
@@ -143,7 +143,7 @@ namespace Faithlife.Diff
 			return listChanges;
 		}
 
-		private static int[] CreateUniqueIntegerForEachItem<T>(IList<T> list, Dictionary<T, int> dict)
+		private static int[] CreateUniqueIntegerForEachItem<T>(IReadOnlyList<T> list, Dictionary<T, int> dict)
 		{
 			List<int> listCodes = new List<int>(list.Count);
 			int nLastCode = dict.Count;

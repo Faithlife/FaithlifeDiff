@@ -3,14 +3,14 @@
 Finds the differences between the two lists.
 
 ```csharp
-public static IEnumerable<ValueTuple<IndexRange, IndexRange>> FindDifferences<T>(IList<T> listFirst, IList<T> listSecond)
+public static IReadOnlyList<ValueTuple<IndexRange, IndexRange>> FindDifferences<T>(IReadOnlyList<T> first, IReadOnlyList<T> second)
 ```
 
 | parameter | description |
 | --- | --- |
 | T | The type of item in the lists. |
-| listFirst | The first list. |
-| listSecond | The second list. |
+| first | The first list. |
+| second | The second list. |
 
 ## Return Value
 
@@ -35,15 +35,15 @@ EqualityComparer&lt;T&gt;.Default is used to compare items.
 Finds the differences between the two lists.
 
 ```csharp
-public static IEnumerable<ValueTuple<IndexRange, IndexRange>> FindDifferences<T>(IList<T> listFirst, 
-    IList<T> listSecond, IEqualityComparer<T> comparer)
+public static IReadOnlyList<ValueTuple<IndexRange, IndexRange>> FindDifferences<T>(IReadOnlyList<T> first, 
+    IReadOnlyList<T> second, IEqualityComparer<T> comparer)
 ```
 
 | parameter | description |
 | --- | --- |
 | T | The type of item in the lists. |
-| listFirst | The first list. |
-| listSecond | The second list. |
+| first | The first list. |
+| second | The second list. |
 | comparer | The comparer. |
 
 ## Return Value
