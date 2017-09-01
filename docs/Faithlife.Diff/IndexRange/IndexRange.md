@@ -3,13 +3,13 @@
 Initializes a new instance of the [`IndexRange`](../IndexRange.md) class.
 
 ```csharp
-public IndexRange(int nStart, int nLength)
+public IndexRange(int start, int length)
 ```
 
 | parameter | description |
 | --- | --- |
-| nStart | The start of the index range. |
-| nLength | Length of the index range. |
+| start | The start of the index range. |
+| length | Length of the index range. |
 
 ## See Also
 
