@@ -1,7 +1,5 @@
 # Faithlife.Diff assembly
 
-The assembly `Faithlife.Diff.dll` has 2 public types in 1 namespace.
-
 ## Faithlife.Diff namespace
 
 | public type | description |
