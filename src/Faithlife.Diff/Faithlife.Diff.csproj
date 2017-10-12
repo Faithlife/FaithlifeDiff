@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.0.0</Version>
-    <TargetFrameworks>netstandard1.0;netstandard2.0;net46</TargetFrameworks>
-    <FrameworkPathOverride Condition="'$(TargetFramework)' == 'net46' and '$(MONO_ROOT)' != ''">$(MONO_ROOT)/lib/mono/4.6-api/</FrameworkPathOverride>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <TargetFrameworks>netstandard1.4;netstandard2.0;net461</TargetFrameworks>
+    <FrameworkPathOverride Condition="'$(TargetFramework)' == 'net461' and '$(MONO_ROOT)' != ''">$(MONO_ROOT)/lib/mono/4.6.1-api/</FrameworkPathOverride>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
@@ -11,7 +11,7 @@
     <DebugSymbols>True</DebugSymbols>
     <PackageLicenseUrl>https://raw.githubusercontent.com/Faithlife/FaithlifeDiff/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Faithlife/FaithlifeDiff</PackageProjectUrl>
-    <PackageReleaseNotes>https://github.com/Faithlife/FaithlifeDiff/VersionHistory.md</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/Faithlife/FaithlifeDiff/blob/master/VersionHistory.md#released</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/Faithlife/FaithlifeDiff.git</RepositoryUrl>
     <Authors>Faithlife Corporation</Authors>
     <Copyright>Copyright 2017 Faithlife Corporation</Copyright>
