@@ -13,6 +13,7 @@
     <PackageProjectUrl>https://github.com/Faithlife/FaithlifeDiff</PackageProjectUrl>
     <PackageReleaseNotes>https://github.com/Faithlife/FaithlifeDiff/blob/master/VersionHistory.md#released</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/Faithlife/FaithlifeDiff.git</RepositoryUrl>
+    <Description>Finds the differences between two lists of items.</Description>
     <Authors>Faithlife Corporation</Authors>
     <Copyright>Copyright 2017 Faithlife Corporation</Copyright>
     <SourceLinkUrl>https://raw.githubusercontent.com/Faithlife/FaithlifeDiff/{commit}/*</SourceLinkUrl>
